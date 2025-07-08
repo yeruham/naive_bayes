@@ -18,7 +18,6 @@ for value in df.iloc[:, -1].unique():
 print(data)
 
 
-
 for column in df.columns:
     d = {}
     if column != 'Buy_Computer':
@@ -58,4 +57,4 @@ def naive(data: dict, **kwargs):
             print(r[1] * (r[0] / df.shape[0]))
 
 
-naive(data, age= 'senior', income= 'medium', student= 'no', credit_rating= 'excellent')
+naive(data, age= 'youth', income= 'medium', student= 'no', credit_rating= 'fair')
