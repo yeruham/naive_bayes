@@ -1,5 +1,3 @@
-from itertools import count
-
 import pandas as pd
 
 
@@ -40,6 +38,7 @@ for column in df.columns:
     # print(d)
 
 print(data)
+
 
 def naive(data: dict, **kwargs):
         result = {}
