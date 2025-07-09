@@ -86,4 +86,3 @@ class Naive_bayesian_model:
             self.__create_data_by_classified()
 
         return self._data_by_classified
-
