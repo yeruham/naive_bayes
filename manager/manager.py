@@ -18,12 +18,12 @@ class Manager:
         keep_running = True
 
         while(keep_running):
-            keep_running = self._repeat_menu()
-            if keep_running == '1':
+            running = self._repeat_menu()
+            if running == '1':
                 data = self.receiving_data()
                 print("data:   ", data)
                 self.calc_new_data_by_classified(data)
-            elif keep_running == '2':
+            elif running == '2':
                 keep_running = False
             else:
                 pass
@@ -99,7 +99,3 @@ class Manager:
     def calc_new_data_by_classified(self, dict_data: dict):
         answer = self._naive_manager.calc_new_data_by_classified(dict_data)
         print(f"The {self._classified_column} estimated by data is {answer}")
-
-
-manager = Manager()
-manager.run_program()
