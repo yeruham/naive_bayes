@@ -31,7 +31,6 @@ class Naive_calc:
             for k, percent in dict_data.items():
                 result[classified] *= columns[k][percent]
 
-
         return result
 
 
