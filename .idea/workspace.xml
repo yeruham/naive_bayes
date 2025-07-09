@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d028472f-ab5b-4b4a-8d97-34fab2cf0535" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/manager/manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naive_bayesian/naive_meneger.py" beforeDir="false" afterPath="$PROJECT_DIR$/naive_bayesian/naive_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,13 +48,14 @@
   "keyToString": {
     "Python.exam_naive_model.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.manager.executor": "Run",
     "Python.naive_bayesian_model.executor": "Run",
     "Python.naive_calc.executor": "Run",
     "Python.naive_meneger.executor": "Run",
     "Python.naive_model.executor": "Run",
     "Python.naive_modle.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "step3"
   }
 }]]></component>
   <component name="RecentsManager">
