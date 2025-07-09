@@ -8,9 +8,9 @@ class Naive_calc:
         self._data_by_classified = data_by_classified
 
 
-    def naive_calc_by_column(self, dict_data: dict):
+    def calc_answer(self, dict_data: dict):
 
-        result = self.percent_by_column(dict_data)
+        result = self.calc_percent_by_classified(dict_data)
 
         high_percentage = 0
         answer = ""
@@ -22,7 +22,7 @@ class Naive_calc:
         return answer
 
 
-    def percent_by_column(self, dict_data: dict):
+    def calc_percent_by_classified(self, dict_data: dict):
         result = {}
 
         for classified, columns in self._data_by_classified.items():
@@ -32,5 +32,15 @@ class Naive_calc:
                 result[classified] *= columns[k][percent]
 
         return result
+
+    def full_data_of_calc(self, dict_data: dict):
+
+        result = self.calc_percent_by_classified(dict_data)
+        information = f"data: {dict(dict_data)}\nresult: {result}\n"
+
+        return information
+
+
+
 
 
