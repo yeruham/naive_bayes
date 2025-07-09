@@ -39,8 +39,3 @@ class Naive_calc:
         information = f"data: {dict(dict_data)}\nresult: {result}\n"
 
         return information
-
-
-
-
-

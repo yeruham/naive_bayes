@@ -18,13 +18,7 @@ class Exam_naive_model:
 
             classified = row.pop(self._classified_column)
             answer = self._naive_calc.calc_answer(row)
-            print(self._naive_calc.full_data_of_calc(row))
             if answer == classified:
                 matching_percentage += 1
 
         return matching_percentage / num_rows
-
-
-
-
-
