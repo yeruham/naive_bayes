@@ -3,7 +3,7 @@ import naive_bayesian.naive_calc as naive_c
 import naive_bayesian.exam_naive_model as naive_e
 from sklearn.model_selection import train_test_split
 
-class Naive_meneger:
+class Naive_manager:
 
     def __init__(self, data_frame, classified_column):
 
@@ -21,11 +21,14 @@ class Naive_meneger:
         self._percent_classified = self._naive_model.get_percent_classified()
         self._data_by_classified = self._naive_model.get_data_by_classified()
 
-    def create_naive_calc(self):
+    def __create_naive_calc(self):
         if self._percent_classified is not None and self._data_by_classified is not None:
             self._naive_calc = naive_c.Naive_calc(self._percent_classified, self._data_by_classified)
 
     def exam_model(self):
+        if self._naive_calc is None:
+            self.__create_naive_calc()
+
         if self._naive_calc is not None:
             self._naive_exam = naive_e.Exam_naive_model(self.df_test, self._classified_column, self._naive_calc)
             results = self._naive_exam.run_test()
@@ -33,9 +36,9 @@ class Naive_meneger:
 
 
     def calc_new_data_by_classified(self, dict_data: dict):
+        if self._naive_calc is None:
+            self.__create_naive_calc()
 
         if self._naive_calc is not None:
             answer = self._naive_calc.calc_answer(dict_data)
             return answer
-
-
