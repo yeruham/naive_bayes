@@ -17,17 +17,17 @@ class Manager:
     def run_program(self):
 
         self.run_model()
-        keep_running = True
+        #keep_running = True
 
-        while(keep_running):
-            user_choice = self._repeat_menu()
-            if user_choice == '1':
-                data = self.receiving_data()
-                self.calc_new_data_by_classified(data)
-            elif user_choice == '2':
-                keep_running = False
-            else:
-                pass
+        # while(keep_running):
+        #     user_choice = self._repeat_menu()
+        #     if user_choice == '1':
+        #         data = self.receiving_data()
+        #         self.calc_new_data_by_classified(data)
+        #     elif user_choice == '2':
+        #         keep_running = False
+        #     else:
+        #         pass
 
 
     def run_model(self):
@@ -75,28 +75,29 @@ class Manager:
             print(f"The accuracy of the model is {results}.\n")
 
 
-    def _repeat_menu(self):
-        menu = input("To check data enter 1.\n"
-                "To exit enter 2:\n")
-        return menu
+    # def _repeat_menu(self):
+    #     menu = input("To check data enter 1.\n"
+    #             "To exit enter 2:\n")
+    #     return menu
 
-    def receiving_data(self):
-
-        if isinstance(self._df, pd.DataFrame):
-            data = {}
-            columns = [col for col in self._df.columns if col != self._classified_column]
-
-            for column in columns:
-                    possible_values = self._df[column].unique()
-                    value = input(f"Enter value for {column} column:\n")
-                    if value in possible_values:
-                        data[column] = value
-            return data
+    # def receiving_data(self):
+    #
+    #     if isinstance(self._df, pd.DataFrame):
+    #         data = {}
+    #         columns = [col for col in self._df.columns if col != self._classified_column]
+    #
+    #         for column in columns:
+    #                 possible_values = self._df[column].unique()
+    #                 value = input(f"Enter value for {column} column:\n")
+    #                 if value in possible_values:
+    #                     data[column] = value
+    #         return data
 
 
     def calc_new_data_by_classified(self, dict_data: dict):
         if dict_data:
             answer = self._naive_manager.calc_new_data_by_classified(dict_data)
             print(f"\nThe {self._classified_column} estimated by {dict_data} is {answer}.\n")
+            return answer
         else:
             print("The values entered do not exist in the model.\n")
