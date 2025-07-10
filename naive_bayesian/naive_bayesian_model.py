@@ -3,11 +3,19 @@ import pandas as pd
 
 class Naive_bayesian_model:
 
-    def __init__(self, data_frame, classified_column):
+    def __init__(self, data_frame: pd.DataFrame, classified_column):
+        self._validate_inputs(data_frame, classified_column)
         self._df = data_frame
         self._classified_column = classified_column
         self._percent_classified = {}
         self._data_by_classified = {}
+
+
+    def _validate_inputs(self, data_frame, classified_column):
+        if not isinstance(data_frame, pd.DataFrame):
+            raise TypeError("data_frame must be a pandas DataFrame")
+        if classified_column not in data_frame.columns:
+            raise ValueError(f"Column '{classified_column}' does not exist in the DataFrame")
 
 
     def _create_percent_classified(self):
