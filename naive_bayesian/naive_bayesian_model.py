@@ -41,15 +41,10 @@ class Naive_bayesian_model:
 
 
     def __add_column_to_data(self, data_frame, column, classified):
-        data = {}
+
         current_series = data_frame[column]
-
-        for value in current_series.unique():
-            num_values = current_series[(current_series == value)].count()
-            percent = num_values / len(current_series)
-            data[value] = float(percent)
-
-        self._data_by_classified[classified][column] = data
+        data_percent = current_series.value_counts(normalize=True).to_dict()
+        self._data_by_classified[classified][column] = data_percent
 
 
     def __laplace_smoothing_by_column(self, data_frame, column, classified):
