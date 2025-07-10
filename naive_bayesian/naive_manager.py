@@ -1,3 +1,4 @@
+import pandas as pd
 import naive_bayesian.naive_bayesian_model as naive_m
 import naive_bayesian.naive_calc as naive_c
 import naive_bayesian.exam_naive_model as naive_e
@@ -5,8 +6,9 @@ from sklearn.model_selection import train_test_split
 
 class Naive_manager:
 
-    def __init__(self, data_frame, classified_column):
+    def __init__(self, data_frame: pd.DataFrame, classified_column):
 
+        self._validate_inputs(data_frame, classified_column)
         self._df_train, self.df_test = train_test_split(data_frame, test_size=0.3, random_state=42)
         self._classified_column = classified_column
         self._naive_model = None
@@ -16,14 +18,23 @@ class Naive_manager:
         self._data_by_classified = None
 
 
+    def _validate_inputs(self, data_frame, classified_column):
+        if not isinstance(data_frame, pd.DataFrame):
+            raise TypeError("data_frame must be a pandas DataFrame")
+        if classified_column not in data_frame.columns:
+            raise ValueError(f"Column '{classified_column}' does not exist in the DataFrame")
+
+
     def create_model(self):
         self._naive_model = naive_m.Naive_bayesian_model(self._df_train, self._classified_column)
         self._percent_classified = self._naive_model.get_percent_classified()
         self._data_by_classified = self._naive_model.get_data_by_classified()
 
+
     def __create_naive_calc(self):
         if self._percent_classified is not None and self._data_by_classified is not None:
             self._naive_calc = naive_c.Naive_calc(self._percent_classified, self._data_by_classified)
+
 
     def exam_model(self):
         if self._naive_calc is None:
