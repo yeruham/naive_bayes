@@ -84,17 +84,21 @@ class Manager:
             data = {}
             for column in self._df.columns:
                 if column != self._classified_column:
-                    match_value = False
-                    possible_values = self._df[column].unique()
-
-                    while(not match_value):
-                        value = input(f"Enter value for {column} column\n")
-                        if value.isdigit():
-                            value = int(value)
-                        if value in possible_values:
-                            match_value = True
-                            data[column] = value
+                            data[column] = self.receiving_value(column)
             return data
+
+    def receiving_value(self, column):
+
+        match_value = False
+        possible_values = self._df[column].unique()
+
+        while (not match_value):
+            value = input(f"Enter value for {column} column\n")
+            if value.isdigit():
+                value = int(value)
+            if value in possible_values:
+                match_value = True
+                return value
 
 
     def calc_new_data_by_classified(self, dict_data: dict):
