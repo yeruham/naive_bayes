@@ -3,7 +3,7 @@ from naive_bayesian.naive_bayesian_model import Naive_bayesian_model
 
 class Naive_calc:
 
-    def __init__(self, percent_classified, data_by_classified):
+    def __init__(self, percent_classified: dict, data_by_classified: dict):
         self._percent_classified = percent_classified
         self._data_by_classified = data_by_classified
 
