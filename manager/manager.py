@@ -14,36 +14,34 @@ class Manager:
 
     def run_program(self):
 
-        self.start_run()
+        self.run_model()
         keep_running = True
 
         while(keep_running):
-            running = self._repeat_menu()
-            if running == '1':
+            user_choice = self._repeat_menu()
+            if user_choice == '1':
                 data = self.receiving_data()
-                print("data:   ", data)
                 self.calc_new_data_by_classified(data)
-            elif running == '2':
+            elif user_choice == '2':
                 keep_running = False
             else:
                 pass
 
 
-    def start_run(self):
+    def run_model(self):
+        self.file_received()
+        self._create_model()
+        self._exam_model()
+
+
+    def file_received(self):
 
         file_received = False
-
         while(not file_received):
             self._csv_path = input("Insert scv file path\n")
             self._classified_column = input("Enter name of classified column\n")
             file_received = self._create_df()
-
-        print("The model is currently being produced.\n")
-        self._create_model()
-        print("The model was created successfully\n" 
-              "The model will then be tested and its accuracy percentage will be displayed.\n")
-        results = self._exam_model()
-        print(f"The accuracy of the model is {results}\n")
+        print("The file has been received. The model is currently being produced.\n")
 
 
     def _create_df(self):
@@ -60,16 +58,19 @@ class Manager:
         else:
             return False
 
+
     def _create_model(self):
         if self._df is not None:
             self._naive_manager = naive_m.Naive_manager(self._df, self._classified_column)
             self._naive_manager.create_model()
+            print("The model was created successfully\n"
+                  "The model will then be tested and its accuracy percentage will be displayed.\n")
 
 
     def _exam_model(self):
         if self._naive_manager is not None:
             results = self._naive_manager.exam_model()
-            return results
+            print(f"The accuracy of the model is {results}\n")
 
 
     def _repeat_menu(self):
@@ -98,4 +99,4 @@ class Manager:
 
     def calc_new_data_by_classified(self, dict_data: dict):
         answer = self._naive_manager.calc_new_data_by_classified(dict_data)
-        print(f"The {self._classified_column} estimated by data is {answer}")
+        print(f"\nThe {self._classified_column} estimated by data is {answer}\n")
