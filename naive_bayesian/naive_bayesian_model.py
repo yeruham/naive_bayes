@@ -68,15 +68,14 @@ class Naive_bayesian_model:
         for classified in self._data_by_classified:
 
             data_frame = self._df[self._df[self._classified_column] == classified]
+            data_frame = data_frame.drop(self._classified_column, axis= 1)
 
-            for column in self._df.columns:
+            for column in data_frame.columns:
 
-                if column != self._classified_column:
-
-                    if data_frame[column].nunique() != self._df[column].nunique():
-                        self.__laplace_smoothing_by_column(data_frame, column, classified)
-                    else:
-                        self.__add_column_to_data(data_frame, column, classified)
+                if data_frame[column].nunique() < self._df[column].nunique():
+                    self.__laplace_smoothing_by_column(data_frame, column, classified)
+                else:
+                    self.__add_column_to_data(data_frame, column, classified)
 
 
 
