@@ -13,12 +13,7 @@ class Naive_bayesian_model:
     def _create_percent_classified(self):
 
         series_classified = self._df[self._classified_column]
-
-        for unique_values in series_classified.unique():
-            num_values = series_classified[series_classified == unique_values].count()
-            percent = num_values / len(series_classified)
-
-            self._percent_classified[unique_values] = float(percent)
+        self._percent_classified = series_classified.value_counts(normalize=True).to_dict()
 
 
     def get_percent_classified(self):
