@@ -28,8 +28,8 @@ class Naive_calc:
         for classified, columns in self._data_by_classified.items():
             result[classified] = 1
 
-            for k, percent in dict_data.items():
-                result[classified] *= columns[k][percent]
+            for k, v in dict_data.items():
+                result[classified] *= columns[k][v]
 
         return result
 
