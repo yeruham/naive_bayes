@@ -29,7 +29,10 @@ class Naive_calc:
             result[classified] = 1
 
             for k, v in dict_data.items():
-                result[classified] *= columns[k][v]
+                try:
+                    result[classified] *= columns[k][v]
+                except:
+                    pass
 
         return result
 

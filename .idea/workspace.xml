@@ -44,20 +44,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.exam_naive_model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.manager.executor&quot;: &quot;Run&quot;,
-    &quot;Python.naive_bayesian_model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.naive_calc.executor&quot;: &quot;Run&quot;,
-    &quot;Python.naive_meneger.executor&quot;: &quot;Run&quot;,
-    &quot;Python.naive_model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.naive_modle.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;step3&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.exam_naive_model.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.manager.executor": "Run",
+    "Python.naive_API.executor": "Run",
+    "Python.naive_bayesian_model.executor": "Run",
+    "Python.naive_calc.executor": "Run",
+    "Python.naive_meneger.executor": "Run",
+    "Python.naive_model.executor": "Run",
+    "Python.naive_modle.executor": "Run",
+    "Python.request_API.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "serverB"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\python_data\naive_bayes\naive_bayesian" />
