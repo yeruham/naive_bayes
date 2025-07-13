@@ -26,12 +26,13 @@ def receiving_data(params: list):
     for i in range(num_params):
         possible_values = model._df[columns[i]].unique()
         column_type = model._df[columns[i]].dtype
-        if params[i].isdigit():
+        if Manager.is_number(params[i]):
             params[i] = column_type.type(params[i])
         if params[i] in possible_values:
             dict_data[columns[i]] = params[i]
 
     return dict_data
+
 
 
 if __name__ == "__main__":

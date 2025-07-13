@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 
+from pandas.core.dtypes.inference import is_number
 
 import naive_bayesian.naive_manager as naive_m
 
@@ -90,12 +91,20 @@ class Manager:
                     possible_values = self._df[column].unique()
                     column_type = self._df[column].dtype
                     value = input(f"Enter value for {column} column:\n")
-                    if value.isdigit():
+                    if Manager.is_number(value):
+                        print(column, value)
                         value = column_type.type(value)
                     if value in possible_values:
                         data[column] = value
             return data
 
+    @staticmethod
+    def is_number(s):
+        try:
+            float(s)
+            return True
+        except ValueError:
+            return False
 
     def calc_new_data_by_classified(self, dict_data: dict):
         if dict_data:
