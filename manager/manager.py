@@ -88,7 +88,10 @@ class Manager:
 
             for column in columns:
                     possible_values = self._df[column].unique()
+                    column_type = self._df[column].dtype
                     value = input(f"Enter value for {column} column:\n")
+                    if value.isdigit():
+                        value = column_type.type(value)
                     if value in possible_values:
                         data[column] = value
             return data
@@ -98,5 +101,6 @@ class Manager:
         if dict_data:
             answer = self._naive_manager.calc_new_data_by_classified(dict_data)
             print(f"\nThe {self._classified_column} estimated by {dict_data} is {answer}.\n")
+            return answer
         else:
             print("The values entered do not exist in the model.\n")
