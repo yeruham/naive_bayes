@@ -26,7 +26,7 @@ class Naive_calc:
         result = {}
 
         for classified, columns in self._data_by_classified.items():
-            result[classified] = 1
+            result[classified] = self._percent_classified[classified]
 
             for k, v in dict_data.items():
                 try:

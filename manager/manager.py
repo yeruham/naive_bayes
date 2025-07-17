@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 
-from pandas.core.dtypes.inference import is_number
 
 import naive_bayesian.naive_manager as naive_m
 
