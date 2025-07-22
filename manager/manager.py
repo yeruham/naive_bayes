@@ -13,22 +13,6 @@ class Manager:
         self._naive_manager = None
 
 
-    def run_program(self):
-
-        self.run_model()
-        keep_running = True
-
-        while(keep_running):
-            user_choice = self._repeat_menu()
-            if user_choice == '1':
-                data = self.receiving_data()
-                self.calc_new_data_by_classified(data)
-            elif user_choice == '2':
-                keep_running = False
-            else:
-                pass
-
-
     def run_model(self):
         self.file_received()
         self._create_model()
@@ -72,27 +56,6 @@ class Manager:
             print(f"The accuracy of the model is {results}.\n")
 
 
-    def _repeat_menu(self):
-        menu = input("To check data enter 1.\n"
-                "To exit enter 2:\n")
-        return menu
-
-    def receiving_data(self):
-
-        if isinstance(self._df, pd.DataFrame):
-            data = {}
-            columns = [col for col in self._df.columns if col != self._classified_column]
-
-            for column in columns:
-                    possible_values = self._df[column].unique()
-                    column_type = self._df[column].dtype
-                    value = input(f"Enter value for {column} column:\n")
-                    if Manager.is_number(value):
-                        print(column, value)
-                        value = column_type.type(value)
-                    if value in possible_values:
-                        data[column] = value
-            return data
 
     @staticmethod
     def is_number(s):
