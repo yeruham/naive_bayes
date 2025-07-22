@@ -1,8 +1,7 @@
 import pandas as pd
 import os
-
-
 import naive_bayesian.naive_manager as naive_m
+from cleaner import Cleaner
 
 
 class Manager:
@@ -51,9 +50,7 @@ class Manager:
 
             if os.path.exists(self._csv_path):
                 self._df = pd.read_csv(self._csv_path)
-                for col in self._df.columns:
-                    if self._df[col].is_unique:
-                        self._df = self._df.drop(columns=[col])
+                self._df = Cleaner.clean_df(self._df)
 
                 if self._classified_column in self._df.columns:
                     return True
