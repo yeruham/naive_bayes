@@ -9,7 +9,7 @@ async def root():
     return {"message": "this api of a naive model, enter values of data with points between them and get an answer"}
 
 
-@app.get('/buy_computer/{values}')
+@app.get('/{values}')
 async def get_answer_by_classified(values):
     params = values.split('.')
     dict_data = receiving_data(params)
@@ -38,4 +38,4 @@ def receiving_data(params: list):
 if __name__ == "__main__":
     model = Manager()
     model.run_model()
-    uvicorn.run(app, host= '127.0.0.1', port= 8000)
+    uvicorn.run(app, host= '0.0.0.0', port= 8000)
