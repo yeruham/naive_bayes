@@ -40,7 +40,7 @@ class Manager:
 
         file_received = False
         while(not file_received):
-            self._csv_path = input("Insert scv file path:\n")
+            self._csv_path = input("Insert csv file path:\n")
             self._classified_column = input("Enter name of classified column:\n")
             file_received = self._create_df()
         print("The file has been received. The model is currently being produced.\n")
