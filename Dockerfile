@@ -10,10 +10,12 @@ COPY data/ ./data/
 
 COPY naive_bayesian/ ./naive_bayesian/
 
-COPY server/naive_API.py ./main.py
+COPY server/naive_API.py naive_API.py
 
 COPY manager/ ./manager/
 
+COPY main.py main.py
+
 EXPOSE 8001
 
-CMD ["python", "main.py"]
+CMD ["python", "naive_API.py"]

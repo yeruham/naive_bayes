@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from manager.manager import Manager
+from main import Manager
 
 app = FastAPI()
 
@@ -19,13 +19,13 @@ async def get_answer_by_classified(values):
 
 def receiving_data(params: list):
 
-    columns = [col for col in model._df.columns if col != model._classified_column]
+    columns = [col for col in model.df.columns if col != model.classified_column]
     num_params = len(params) if len(params) <= len(columns) else len(columns)
     dict_data = {}
 
     for i in range(num_params):
-        possible_values = model._df[columns[i]].unique()
-        column_type = model._df[columns[i]].dtype
+        possible_values = model.df[columns[i]].unique()
+        column_type = model.df[columns[i]].dtype
         if Manager.is_number(params[i]):
             params[i] = column_type.type(params[i])
         if params[i] in possible_values:
@@ -36,6 +36,10 @@ def receiving_data(params: list):
 
 
 if __name__ == "__main__":
-    model = Manager()
-    model.run_model()
+    # path = r'C:\python_data\naive_bayes\data\phishing.csv'
+    path = '/app/data/phishing.csv'
+    classified_column = "class"
+    model = Manager(path, classified_column)
+    model.run_trainer()
+    model.run_validator()
     uvicorn.run(app, host= '0.0.0.0', port= 8001)
