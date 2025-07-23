@@ -1,5 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
+import os
 from requests_classified import Requests_data
 import naive_calc
 
@@ -50,9 +51,10 @@ def get_df_information():
 
 
 if __name__ == "__main__":
-    url = 'http://127.0.0.1:8001/results'
+    db_host = os.getenv("DB_HOST", "localhost")
+    url = f'http://{db_host}:8001/results'
     request = Requests_data(url)
     percent_classified = request.get_percent_classified()
     data_by_classified = request.get_data_by_classified()
     classified = naive_calc.Naive_calc(percent_classified, data_by_classified)
-    uvicorn.run(app, host='127.0.0.1', port=8002)
+    uvicorn.run(app, host='0.0.0.0', port=8002)
