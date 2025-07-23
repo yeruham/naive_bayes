@@ -45,25 +45,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.API.executor": "Run",
-    "Python.exam_naive_model.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.manager.executor": "Run",
-    "Python.naive_API.executor": "Run",
-    "Python.naive_bayesian_model.executor": "Run",
-    "Python.naive_calc.executor": "Run",
-    "Python.naive_meneger.executor": "Run",
-    "Python.naive_model.executor": "Run",
-    "Python.naive_modle.executor": "Run",
-    "Python.request_API.executor": "Run",
-    "Python.requests_classified.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "v2",
-    "last_opened_file_path": "C:/python_data/naive_bayes"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exam_naive_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.manager.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_bayesian_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_calc.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_meneger.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.naive_modle.executor&quot;: &quot;Run&quot;,
+    &quot;Python.request_API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.requests_classified.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;v2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/python_data/naive_bayes&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\python_data\naive_bayes" />

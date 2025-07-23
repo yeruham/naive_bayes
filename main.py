@@ -8,16 +8,15 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
-    return {"message": "this api of a naive model, You can get the model results in the path results"}
+    return {"message": "this api of a naive model, You can get the model results in the path data_classified"}
 
 
-@app.get('/results')
+@app.get('/data_classified')
 async def results():
     percent_classified = model.percent_classified
     data_by_classified = model.data_by_classified
     data_classified = {'percent_classified': percent_classified, 'data_by_classified': data_by_classified}
     return json.dumps(data_classified)
-
 
 
 

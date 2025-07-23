@@ -9,15 +9,18 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
-    return {"message": "this api of classified naive model, enter values of data with points between them and get an answer"}
+    return {"message": "This api of classified naive model, enter values of data with points between them and get an answer"}
 
 
 @app.get('/{values}')
 async def get_answer_by_classified(values):
     params = values.split('.')
-    dict_data = receiving_data(params)
-    answer = classified.calc_answer(dict_data)
-    return {"message": f"The estimated by {dict_data} is {answer}."}
+    try:
+        dict_data = receiving_data(params)
+        answer = classified.calc_answer(dict_data)
+        return {"message": f"The estimated by {dict_data} is {answer}."}
+    except:
+        return {"message": "Error: No data was received from the model."}
 
 
 def receiving_data(params: list):
@@ -29,9 +32,6 @@ def receiving_data(params: list):
 
     for i in range(num_params):
         possible_values = df_information[columns[i]].keys()
-        # column_type = df_information[columns[i]]
-        # if is_number(params[i]):
-        #     params[i] = column_type.type(params[i])
         if params[i] in possible_values:
             dict_data[columns[i]] = params[i]
 
@@ -42,19 +42,17 @@ def get_df_information():
     data = data_by_classified[keys[0]]
     return data
 
-# def is_number(s):
-#     try:
-#         float(s)
-#         return True
-#     except ValueError:
-#         return False
 
 
 if __name__ == "__main__":
     db_host = os.getenv("DB_HOST", "localhost")
-    url = f'http://{db_host}:8001/results'
-    request = Requests_data(url)
-    percent_classified = request.get_percent_classified()
-    data_by_classified = request.get_data_by_classified()
-    classified = naive_calc.Naive_calc(percent_classified, data_by_classified)
+    url = f'http://{db_host}:8001/data_classified'
+    try:
+        request = Requests_data(url)
+        percent_classified = request.get_percent_classified()
+        data_by_classified = request.get_data_by_classified()
+        classified = naive_calc.Naive_calc(percent_classified, data_by_classified)
+    except:
+        pass
+
     uvicorn.run(app, host='0.0.0.0', port=8002)
