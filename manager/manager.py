@@ -19,7 +19,7 @@ class Manager:
 
     def receiving_df(self, path):
         df = Loader.load_csv(path)
-        df = Cleaner.clean_df(self.df)
+        df = Cleaner.clean_df(df)
         return df
 
 
