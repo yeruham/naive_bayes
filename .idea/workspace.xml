@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d028472f-ab5b-4b4a-8d97-34fab2cf0535" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/classified/API.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classified/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classified/requests_classified.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/df/cleaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/df/cleaner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/manager/manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/manager/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naive_bayesian/exam_naive_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/exam_naive_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naive_bayesian/naive_bayesian_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/naive_bayesian_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naive_bayesian/naive_calc.py" beforeDir="false" afterPath="$PROJECT_DIR$/classified/naive_calc.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +54,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.API.executor": "Run",
     "Python.exam_naive_model.executor": "Run",
     "Python.main.executor": "Run",
     "Python.manager.executor": "Run",
@@ -56,15 +65,18 @@
     "Python.naive_model.executor": "Run",
     "Python.naive_modle.executor": "Run",
     "Python.request_API.executor": "Run",
+    "Python.requests_classified.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "v1",
+    "git-widget-placeholder": "v2",
     "last_opened_file_path": "C:/python_data/naive_bayes"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\python_data\naive_bayes\df" />
       <recent name="C:\python_data\naive_bayes" />
+      <recent name="C:\python_data\naive_bayes\model" />
+      <recent name="C:\python_data\naive_bayes\classified" />
+      <recent name="C:\python_data\naive_bayes\df" />
       <recent name="C:\python_data\naive_bayes\naive_bayesian" />
     </key>
   </component>

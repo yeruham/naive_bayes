@@ -1,5 +1,4 @@
-import pandas as pd
-from naive_bayesian.naive_calc import Naive_calc
+from classified.naive_calc import Naive_calc
 
 
 class Exam_naive_model:

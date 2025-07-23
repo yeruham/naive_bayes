@@ -1,8 +1,8 @@
 from df.loader import Loader
 from df.cleaner import Cleaner
-import naive_bayesian.naive_bayesian_model as naive_model
-import naive_bayesian.exam_naive_model as naive_exam
-import naive_bayesian.naive_calc as naive_calc
+import model.naive_bayesian_model as naive_model
+import model.exam_naive_model as naive_exam
+import classified.naive_calc as naive_calc
 from sklearn.model_selection import train_test_split
 
 
@@ -19,7 +19,7 @@ class Manager:
 
     def receiving_df(self, path):
         df = Loader.load_csv(path)
-        df = Cleaner.clean_df(self.df)
+        df = Cleaner.clean_df(df)
         return df
 
 

@@ -9,4 +9,6 @@ class Cleaner:
             if data_frame[col].is_unique:
                 data_frame = data_frame.drop(columns=[col])
 
+        data_frame = data_frame.astype(str)
+
         return data_frame
