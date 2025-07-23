@@ -20,6 +20,7 @@ class Manager:
     def receiving_df(self, path):
         df = Loader.load_csv(path)
         df = Cleaner.clean_df(df)
+        df = Cleaner.convert_to_string(df)
         return df
 
 
