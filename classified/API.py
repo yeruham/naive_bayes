@@ -64,13 +64,4 @@ def get_df_information():
 
 
 if __name__ == "__main__":
-    # db_host = os.getenv("DB_HOST", "localhost")
-    # url = f'http://{db_host}:8001/data_classified/?file_name=phishing&classified_column=class'
-    # try:
-    #     request = Requests_data(url)
-    #     percent_classified = request.get_percent_classified()
-    #     data_by_classified = request.get_data_by_classified()
-    #     classified = naive_calc.Naive_calc(percent_classified, data_by_classified)
-    # except:
-    #     pass
     uvicorn.run(app, host='0.0.0.0', port=8002)
