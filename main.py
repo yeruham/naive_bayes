@@ -1,63 +1,54 @@
-import pandas as pd
-from manager.loader import Loader
-from manager.cleaner import Cleaner
-import naive_bayesian.naive_bayesian_model as naive_model
-import naive_bayesian.exam_naive_model as naive_exam
-import naive_bayesian.naive_calc as naive_calc
-from sklearn.model_selection import train_test_split
+import uvicorn
+from fastapi import FastAPI
+from manager.manager import Manager
+
+app = FastAPI()
+
+@app.get('/')
+async def root():
+    return {"message": "this api of a naive model, enter values of data with points between them and get an answer"}
 
 
-class Manager:
+@app.get('/{values}')
+async def get_answer_by_classified(values):
+    params = values.split('.')
+    dict_data = receiving_data(params)
+    answer = model.calc_new_data_by_classified(dict_data)
+    return {"message": f"The estimated by {dict_data} is {answer}."}
 
-    def __init__(self, path, classified_column):
-        self.df = Loader.load_csv(path)
-        self.df = Cleaner.clean_df(self.df)
-        self.df_train, self.df_test = train_test_split(self.df, test_size=0.3, random_state=42)
-        self.classified_column = classified_column
-        self.classified = None
 
-    def run_trainer(self):
-        trainer = naive_model.Naive_bayesian_model(self.df_train, self.classified_column)
-        self.percent_classified = trainer.get_percent_classified()
-        self.data_by_classified = trainer.get_data_by_classified()
+def receiving_data(params: list):
 
-    def create_classified(self):
-        self.classified = naive_calc.Naive_calc(self.percent_classified, self.data_by_classified)
+    columns = [col for col in df.columns if col != classified_column]
+    num_params = len(params) if len(params) <= len(columns) else len(columns)
+    dict_data = {}
 
-    def run_validator(self):
-        if self.classified is None:
-            self.create_classified()
+    for i in range(num_params):
+        possible_values = df[columns[i]].unique()
+        column_type = df[columns[i]].dtype
+        if is_number(params[i]):
+            params[i] = column_type.type(params[i])
+        if params[i] in possible_values:
+            dict_data[columns[i]] = params[i]
 
-        validator = naive_exam.Exam_naive_model(self.df_test, self.classified_column, self.classified)
-        results = validator.run_test()
-        print(f"The accuracy of the model is {results}.\n")
+    return dict_data
 
-    def calc_new_data_by_classified(self, dict_data: dict):
-        if self.classified is None:
-            self.create_classified()
 
-        if self.classified is not None:
-            answer = self.classified.calc_answer(dict_data)
-            return answer
-
-    @staticmethod
-    def is_number(s):
-        try:
-            float(s)
-            return True
-        except ValueError:
-            return False
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == "__main__":
+    # path = r'C:\python_data\naive_bayes\data\phishing.csv'
+    path = 'data/phishing.csv'
+    classified_column = "class"
+    model = Manager(path, classified_column)
+    df = model.df
+    model.run_trainer()
+    model.run_validator()
+    uvicorn.run(app, host= '127.0.0.1', port= 8001)

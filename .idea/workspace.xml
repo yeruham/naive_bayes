@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d028472f-ab5b-4b4a-8d97-34fab2cf0535" name="Changes" comment="" />
+    <list default="true" id="d028472f-ab5b-4b4a-8d97-34fab2cf0535" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/manager/manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/cleaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/df/cleaner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/df/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naive_bayesian/naive_manager.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/naive_API.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,12 +63,14 @@
     "Python.naive_modle.executor": "Run",
     "Python.request_API.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "version2",
+    "git-widget-placeholder": "v1",
     "last_opened_file_path": "C:/python_data/naive_bayes"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\python_data\naive_bayes\df" />
+      <recent name="C:\python_data\naive_bayes" />
       <recent name="C:\python_data\naive_bayes\naive_bayesian" />
     </key>
   </component>
