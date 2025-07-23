@@ -1,10 +1,8 @@
 import uvicorn
 from fastapi import FastAPI
-
-from df.cleaner import Cleaner
 from requests_classified import Requests_data
 import naive_calc
-import pandas as pd
+
 
 app = FastAPI()
 
@@ -20,32 +18,36 @@ async def get_answer_by_classified(values):
     answer = classified.calc_answer(dict_data)
     return {"message": f"The estimated by {dict_data} is {answer}."}
 
+
 def receiving_data(params: list):
 
-    df = pd.read_csv(r'C:\python_data\naive_bayes\data\phishing.csv')
-    df = Cleaner.clean_df(df)
-    classified_column = "class"
-    columns = [col for col in df.columns if col != classified_column]
+    df_information = get_df_information()
+    columns = [col for col in df_information]
     num_params = len(params) if len(params) <= len(columns) else len(columns)
     dict_data = {}
 
     for i in range(num_params):
-        possible_values = df[columns[i]].unique()
-        column_type = df[columns[i]].dtype
-        if is_number(params[i]):
-            params[i] = column_type.type(params[i])
+        possible_values = df_information[columns[i]].keys()
+        # column_type = df_information[columns[i]]
+        # if is_number(params[i]):
+        #     params[i] = column_type.type(params[i])
         if params[i] in possible_values:
             dict_data[columns[i]] = params[i]
 
     return dict_data
 
+def get_df_information():
+    keys = list(data_by_classified.keys())
+    data = data_by_classified[keys[0]]
+    return data
 
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
+# def is_number(s):
+#     try:
+#         float(s)
+#         return True
+#     except ValueError:
+#         return False
+
 
 if __name__ == "__main__":
     url = 'http://127.0.0.1:8001/results'
