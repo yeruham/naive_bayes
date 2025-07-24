@@ -1,5 +1,5 @@
-from df.loader import Loader
-from df.cleaner import Cleaner
+from data_processing.loader import Loader
+from data_processing.cleaner import Cleaner
 import model.naive_bayesian_model as naive_model
 import model.exam_naive_model as naive_exam
 import classified.naive_calc as naive_calc
@@ -21,7 +21,6 @@ class Manager:
     def receiving_df(self, path):
         df = Loader.load_csv(path)
         df = Cleaner.clean_df(df)
-        print(df)
         df = Cleaner.convert_to_string(df)
         return df
 

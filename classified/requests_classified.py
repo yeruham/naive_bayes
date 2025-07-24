@@ -14,7 +14,7 @@ class Requests_data:
     def sub_request(self):
         response = requests.get(self.url)
         data_classified = response.json()
-        self.data_classified = json.loads(data_classified)
+        self.data_classified = data_classified
 
 
     def get_percent_classified(self):
