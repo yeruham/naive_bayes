@@ -9,6 +9,7 @@ app = FastAPI()
 app.state.path = 'data/'
 app.state.model = None
 app.state.file_name = None
+app.state.classified_column = None
 
 @app.get('/')
 async def root():
@@ -19,8 +20,9 @@ async def root():
 async def results(file_name, classified_column):
     path = f"{app.state.path}{file_name}.csv"
     if os.path.exists(path):
-        if app.state.model is None or app.state.file_name != file_name:
+        if app.state.model is None or app.state.file_name != file_name or app.state.classified_column != classified_column:
             app.state.file_name = file_name
+            app.state.classified_column = classified_column
             app.state.model = create_model(path, classified_column)
 
         percent_classified = app.state.model.percent_classified
