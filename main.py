@@ -64,7 +64,10 @@ def get_or_create_model(file_name: str, classified_column: str):
       - Manager: Manager object containing the trained model and results.
       """
     path = f"{app.state.path}{file_name}.csv"
-    if app.state.model is None or app.state.file_name != file_name or app.state.classified_column != classified_column:
+    if (app.state.model is None
+            or app.state.file_name != file_name
+            or app.state.classified_column != classified_column):
+
         app.state.file_name = file_name
         app.state.classified_column = classified_column
         app.state.model = Manager(path, classified_column)
